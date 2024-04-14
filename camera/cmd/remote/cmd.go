@@ -22,7 +22,7 @@ import (
 func main() {
     // NewLoggerFromArgs will create a logging.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
-    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("testsensor"))
+    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("testcamera"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
