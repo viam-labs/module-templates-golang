@@ -5,11 +5,13 @@ package custommovementsensor
 
 import (
     "context"
+    "math"
     "errors"
 
     "go.viam.com/rdk/components/movementsensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
+    "go.viam.com/rdk/spatialmath"
 
     "go.viam.com/utils"
 )
@@ -130,10 +132,10 @@ func (s *customMovementSensor) LinearVelocity(ctx context.Context, extra map[str
     return nil, errUnimplemented
 }
 
-func (s *customMovementSensor) AngularVelocity(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+func (s *customMovementSensor) AngularVelocity(ctx context.Context, extra map[string]interface{}) (spatialmath.AngularVelocity, error) {
     // TODO: Obtain and return angular velocity.
     s.logger.Error("AngularVelocity method unimplemented")
-    return nil, errUnimplemented
+    return spatialmath.AngularVelocity{}, errUnimplemented
 }
 
 func (s *customMovementSensor) LinearAcceleration(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
@@ -142,10 +144,10 @@ func (s *customMovementSensor) LinearAcceleration(ctx context.Context, extra map
     return nil, errUnimplemented
 }
 
-func (s *customMovementSensor) CompassHeading(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+func (s *customMovementSensor) CompassHeading(ctx context.Context, extra map[string]interface{}) (float64, error) {
     // TODO: Obtain and return compass heading.
     s.logger.Error("CompassHeading method unimplemented")
-    return nil, errUnimplemented
+    return 0, errUnimplemented
 }
 
 func (s *customMovementSensor) Orientation(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
@@ -160,10 +162,17 @@ func (s *customMovementSensor) Readings(ctx context.Context, extra map[string]in
     return nil, errUnimplemented
 }
 
-func (s *customMovementSensor) Accuracy(ctx context.Context, extra map[string]interface{}) (*Accuracy, error) {
+func (s *customMovementSensor) Accuracy(ctx context.Context, extra map[string]interface{}) (*movementsensor.Accuracy, error) {
     // TODO: Obtain and return accuracy.
-    s.logger.Error("Accuracy method unimplemented")
-    return nil, errUnimplemented
+    s.logger.Warn("Accuracy method unimplemented")
+    // return nil, errUnimplemented
+    return &movementsensor.Accuracy{
+		AccuracyMap:        map[string]float32{},
+		Hdop:               float32(math.NaN()),
+		Vdop:               float32(math.NaN()),
+		NmeaFix:            int32(-1),
+		CompassDegreeError: float32(math.NaN()),
+	}, nil
 }
 
 // DoCommand is a place to add additional commands to extend the movementsensor API. This is optional.
