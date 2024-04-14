@@ -3,8 +3,8 @@ module github.com/viam-labs/module-templates-golang/powersensor
 go 1.22.0
 
 require (
-	go.viam.com/rdk v0.21.2
-	go.viam.com/utils v0.1.62
+	go.viam.com/rdk v0.24.1
+	go.viam.com/utils v0.1.71
 )
 
 require (
@@ -49,7 +49,7 @@ require (
 	github.com/go-gl/mathgl v1.0.0 // indirect
 	github.com/go-latex/latex v0.0.0-20230307184459-12ec69307ad9 // indirect
 	github.com/go-pdf/fpdf v0.6.0 // indirect
-	github.com/goccy/go-graphviz v0.1.2 // indirect
+	github.com/goccy/go-graphviz v0.1.3-0.20240305010347-606fdf55b06d // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
@@ -132,7 +132,7 @@ require (
 	go.uber.org/goleak v1.2.1 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	go.viam.com/api v0.1.266 // indirect
+	go.viam.com/api v0.1.277 // indirect
 	go.viam.com/test v1.1.1-0.20220913152726-5da9916c08a2 // indirect
 	goji.io v2.0.2+incompatible // indirect
 	golang.org/x/crypto v0.14.0 // indirect
