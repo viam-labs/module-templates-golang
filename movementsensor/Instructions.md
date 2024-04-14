@@ -59,7 +59,7 @@ The simplest way of testing your movementsensor, is to run a version of `viam-se
 
 1. Edit the [`cmd/remote/cmd.go` file](./cmd/remote/cmd.go). The code there should configure and run a robot with your modular resource configured.
 1. Run `make bin/remoteserver` to compile the [`cmd/remote/cmd.go` file](./cmd/module/cmd.go).
-1. Run `./bin/remoteserver my_movementsensor_name` and specify any additional commandline arguments that your code passes  to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
+1. Run `./bin/remoteserver my_movementsensor_name` and specify any additional commandline arguments that your code passes to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
 
 ##### Test your movementsensor with an operational machine
 

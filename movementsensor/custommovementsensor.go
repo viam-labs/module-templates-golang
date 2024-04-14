@@ -8,6 +8,9 @@ import (
     "math"
     "errors"
 
+    "github.com/golang/geo/r3"
+    geo "github.com/kellydunn/golang-geo"
+
     "go.viam.com/rdk/components/movementsensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
@@ -120,16 +123,29 @@ func (s *customMovementSensor) Reconfigure(ctx context.Context, deps resource.De
     return nil
 }
 
-func (s *customMovementSensor) Position(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
-    // TODO: Obtain and return the position.
-    s.logger.Error("Position method unimplemented")
-    return nil, errUnimplemented
+// Properties returns MovementSensorProperties, which holds information aboutwhich readings are supported.
+func (s *customMovementSensor) Properties(ctx context.Context, extra map[string]interface{}) (*movementsensor.Properties, error) {
+    // TODO: Set all properties to false that are not implemented.
+    // This affects what will be visible on the component's control panel.
+    return &movementsensor.Properties{
+		LinearVelocitySupported:  true,
+		AngularVelocitySupported: true,
+		OrientationSupported:     true,
+		PositionSupported:        true,
+		CompassHeadingSupported:  true,
+    }, nil
 }
 
-func (s *customMovementSensor) LinearVelocity(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+func (s *customMovementSensor) Position(ctx context.Context, extra map[string]interface{}) (*geo.Point, float64, error) {
+    // TODO: Obtain and return the position.
+    s.logger.Error("Position method unimplemented")
+    return nil, 0, errUnimplemented
+}
+
+func (s *customMovementSensor) LinearVelocity(ctx context.Context, extra map[string]interface{}) (r3.Vector, error) {
     // TODO: Obtain and return linear velocity.
     s.logger.Error("LinearVelocity method unimplemented")
-    return nil, errUnimplemented
+    return r3.Vector{}, errUnimplemented
 }
 
 func (s *customMovementSensor) AngularVelocity(ctx context.Context, extra map[string]interface{}) (spatialmath.AngularVelocity, error) {
@@ -138,10 +154,10 @@ func (s *customMovementSensor) AngularVelocity(ctx context.Context, extra map[st
     return spatialmath.AngularVelocity{}, errUnimplemented
 }
 
-func (s *customMovementSensor) LinearAcceleration(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+func (s *customMovementSensor) LinearAcceleration(ctx context.Context, extra map[string]interface{}) (r3.Vector, error) {
     // TODO: Obtain and return linear acceleration.
     s.logger.Error("LinearAcceleration method unimplemented")
-    return nil, errUnimplemented
+    return r3.Vector{}, errUnimplemented
 }
 
 func (s *customMovementSensor) CompassHeading(ctx context.Context, extra map[string]interface{}) (float64, error) {
@@ -150,7 +166,7 @@ func (s *customMovementSensor) CompassHeading(ctx context.Context, extra map[str
     return 0, errUnimplemented
 }
 
-func (s *customMovementSensor) Orientation(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+func (s *customMovementSensor) Orientation(ctx context.Context, extra map[string]interface{}) (spatialmath.Orientation, error) {
     // TODO: Obtain and return orientation.
     s.logger.Error("Orientation method unimplemented")
     return nil, errUnimplemented
