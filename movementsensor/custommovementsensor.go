@@ -123,7 +123,7 @@ func (s *customMovementSensor) Reconfigure(ctx context.Context, deps resource.De
     return nil
 }
 
-// Properties returns MovementSensorProperties, which holds information aboutwhich readings are supported.
+// Properties returns MovementSensorProperties, which holds information about which readings are supported.
 func (s *customMovementSensor) Properties(ctx context.Context, extra map[string]interface{}) (*movementsensor.Properties, error) {
     // TODO: Set all properties to false that are not implemented.
     // This affects what will be visible on the component's control panel.
